@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Md. Ashadozzaman | Senior Software Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Md. Ashadozzaman, Senior Software Engineer with 6+ years building scalable platforms across backend, DevOps, and cloud systems."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #0f1b2b;
+        --ink-2: #1b2d44;
+        --accent: #d06b3f;
+        --accent-2: #1f6f78;
+        --paper: #f5f1e8;
+        --sand: #e8e0d0;
+        --mist: #e4edf2;
+        --shadow: 0 20px 50px rgba(15, 27, 43, 0.12);
+        --card: #ffffff;
+        --muted: #3f372f;
+        --panel: #f2f7f7;
+        --chip-bg: #f2e4db;
+        --chip-border: rgba(208, 107, 63, 0.25);
+        --outline: rgba(31, 111, 120, 0.16);
+        --radius-lg: 22px;
+        --radius-md: 16px;
+        --radius-sm: 10px;
+      }
+
+      [data-theme="dark"] {
+        color-scheme: dark;
+        --ink: #e9f1f6;
+        --ink-2: #f4f7fb;
+        --accent: #f4a261;
+        --accent-2: #7bd1d9;
+        --paper: #0c121b;
+        --sand: #111a25;
+        --mist: #0f1a24;
+        --shadow: 0 24px 60px rgba(3, 6, 10, 0.6);
+        --card: #121a25;
+        --muted: #c7d2dd;
+        --panel: #111e27;
+        --chip-bg: #1a2a36;
+        --chip-border: rgba(244, 162, 97, 0.35);
+        --outline: rgba(123, 209, 217, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: radial-gradient(circle at 15% 10%, #e9f1f5 0%, #f5f1e8 55%)
+            no-repeat,
+          linear-gradient(120deg, #f5f1e8 0%, #ecf3f6 42%, #f3efe6 100%);
+        font-family: "Trebuchet MS", "Segoe UI", "Helvetica Neue", Arial,
+          sans-serif;
+      }
+
+      [data-theme="dark"] body {
+        background: radial-gradient(circle at 15% 10%, #16212c 0%, #0c121b 55%)
+            no-repeat,
+          linear-gradient(120deg, #0c121b 0%, #0f1b2b 45%, #0c121b 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .page {
+        width: min(1100px, 92vw);
+        margin: 0 auto;
+        padding: 32px 0 96px;
+      }
+
+      .nav {
+        position: sticky;
+        top: 16px;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        padding: 0 12px;
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: rgba(245, 241, 232, 0.92);
+        border: 1px solid var(--outline);
+        box-shadow: var(--shadow);
+        border-radius: 999px;
+        padding: 8px 14px;
+        backdrop-filter: blur(6px);
+      }
+
+      [data-theme="dark"] .nav-inner {
+        background: rgba(12, 18, 27, 0.92);
+      }
+
+      .brand {
+        font-size: 0.95rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent-2);
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 10px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+      }
+
+      .nav-links a {
+        padding: 8px 12px;
+        border-radius: 999px;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        background: #e9dfcf;
+        color: var(--accent);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 28px;
+        align-items: center;
+        margin-top: 32px;
+      }
+
+      .hero-card {
+        background: var(--card);
+        border-radius: var(--radius-lg);
+        padding: 28px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--outline);
+      }
+
+      .eyebrow {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.32em;
+        color: var(--accent-2);
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 3.4vw, 3.6rem);
+        margin: 0 0 12px;
+        color: var(--ink-2);
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      .hero p {
+        font-size: 1.02rem;
+        line-height: 1.7;
+        color: var(--muted);
+        margin: 0 0 20px;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        border: 1px solid transparent;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn.primary {
+        background: var(--accent);
+        color: #fff7f0;
+        box-shadow: 0 12px 24px rgba(199, 82, 42, 0.25);
+      }
+
+      .btn.secondary {
+        background: var(--paper);
+        border-color: var(--outline);
+        color: var(--ink-2);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero-meta {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        margin-top: 22px;
+      }
+
+      .meta-card {
+        background: var(--panel);
+        border-radius: var(--radius-sm);
+        padding: 12px 14px;
+        border: 1px solid var(--outline);
+      }
+
+      .meta-card strong {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--accent-2);
+      }
+
+      .portrait {
+        position: relative;
+        padding: 24px;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(150deg, #e1f0f2, #f5f1e8 60%);
+        border: 1px solid var(--outline);
+        box-shadow: var(--shadow);
+      }
+
+      [data-theme="dark"] .portrait {
+        background: linear-gradient(150deg, #0f1e26, #0c121b 60%);
+      }
+
+      .portrait img {
+        border-radius: 18px;
+        border: 6px solid rgba(255, 255, 255, 0.65);
+      }
+
+      .portrait .tag {
+        position: absolute;
+        bottom: 18px;
+        left: 18px;
+        background: rgba(26, 26, 26, 0.85);
+        color: #f7f2ea;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+      }
+
+      .section {
+        margin-top: 56px;
+      }
+
+      .section h2 {
+        font-size: 1.6rem;
+        margin: 0 0 18px;
+        color: var(--ink-2);
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      .section-lead {
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        font-size: 1rem;
+        color: var(--muted);
+        max-width: 720px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .grid.two {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .grid.three {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .card {
+        background: var(--card);
+        border-radius: var(--radius-md);
+        padding: 18px;
+        border: 1px solid var(--outline);
+        box-shadow: 0 12px 30px rgba(26, 26, 26, 0.08);
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+      }
+
+      .chip {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--chip-bg);
+        color: var(--ink-2);
+        font-size: 0.78rem;
+        font-weight: 600;
+        border: 1px solid var(--chip-border);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 18px;
+      }
+
+      .role {
+        display: grid;
+        gap: 6px;
+      }
+
+      .role-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--accent-2);
+      }
+
+      .role-meta {
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        font-size: 0.88rem;
+        color: #5b5047;
+      }
+
+      .role ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        font-size: 0.95rem;
+        color: #3f372f;
+      }
+
+      .project-title {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--accent);
+      }
+
+      .contact-grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+      }
+
+      .contact-item {
+        background: var(--panel);
+        border-radius: var(--radius-sm);
+        padding: 12px 14px;
+        border: 1px solid var(--outline);
+      }
+
+      .footer {
+        margin-top: 60px;
+        padding-top: 24px;
+        border-top: 1px solid var(--outline);
+        font-size: 0.85rem;
+        color: var(--muted);
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: all 0.6s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .theme-toggle {
+        display: inline-flex;
+        border: 1px solid var(--outline);
+        background: var(--paper);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+      }
+
+      .gallery {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .gallery-card {
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        border: 1px solid var(--outline);
+        background: var(--card);
+        box-shadow: 0 16px 30px rgba(15, 27, 43, 0.08);
+      }
+
+      .gallery-meta {
+        padding: 14px 16px 18px;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: var(--panel);
+        color: var(--accent-2);
+        border: 1px solid var(--outline);
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-inner {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .nav-inner.open .nav-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding-top: 10px;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+          border: 1px solid rgba(90, 60, 40, 0.2);
+          background: #f6ede0;
+          padding: 6px 12px;
+          border-radius: 999px;
+          font-weight: 700;
+          font-family: "Avenir Next", "Segoe UI", sans-serif;
+        }
+
+        [data-theme="dark"] .menu-toggle {
+          background: #111e27;
+          border-color: var(--outline);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .hero-card {
+          padding: 22px;
+        }
+
+        .portrait {
+          padding: 16px;
+        }
+
+        .nav {
+          top: 8px;
+        }
+
+        .nav-inner {
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-inner" id="nav">
+        <div class="brand">Ashadozzaman</div>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#awards">Awards</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" type="button">
+          Menu
+        </button>
+        <button class="menu-toggle theme-toggle" id="themeToggle" type="button">
+          Theme
+        </button>
+      </div>
+    </nav>
+
+    <main class="page" id="home">
+      <section class="hero">
+        <div class="hero-card reveal">
+          <div class="eyebrow">Senior Software Engineer</div>
+          <h1>Md. Ashadozzaman</h1>
+          <p>
+            I build scalable backend systems and DevOps pipelines for
+            government-grade platforms and enterprise products. 6+ years of
+            experience across Laravel, Inertia.js, Vue, React, Docker, Jenkins,
+            and cloud-native delivery.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="mailto:shovoua@gmail.com"
+              >Let’s talk</a
+            >
+            <a class="btn secondary" href="cv-ashadozzaman.html">View CV</a>
+          </div>
+          <div class="hero-meta">
+            <div class="meta-card">
+              <strong>6+ Years</strong>
+              Product engineering & platform delivery
+            </div>
+            <div class="meta-card">
+              <strong>DevOps Lead</strong>
+              Oracle Cloud, CI/CD, Docker
+            </div>
+            <div class="meta-card">
+              <strong>Gov Platforms</strong>
+              National portals & large-scale systems
+            </div>
+          </div>
+        </div>
+
+        <div class="portrait reveal">
+          <img src="ashadozzaman.png" alt="Portrait of Md. Ashadozzaman" />
+          <div class="tag">Dhaka, Bangladesh</div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <h2>About</h2>
+        <p class="section-lead">
+          Senior Software Engineer with a focus on system architecture, API
+          design, and performance tuning. I’ve led delivery for SmartFlow,
+          Taskiba, and the Bangladesh National Portal ecosystem, blending strong
+          backend engineering with production-grade DevOps practices.
+        </p>
+      </section>
+
+      <section class="section" id="skills">
+        <h2>Core Skills</h2>
+        <div class="grid two">
+          <div class="card reveal">
+            <strong>Backend & Platform</strong>
+            <div class="chip-row">
+              <span class="chip">PHP</span>
+              <span class="chip">Laravel</span>
+              <span class="chip">Inertia.js</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">API Design</span>
+              <span class="chip">Performance Tuning</span>
+            </div>
+          </div>
+          <div class="card reveal">
+            <strong>Frontend Delivery</strong>
+            <div class="chip-row">
+              <span class="chip">Vue</span>
+              <span class="chip">React</span>
+              <span class="chip">Next.js</span>
+              <span class="chip">TailwindCSS</span>
+            </div>
+          </div>
+          <div class="card reveal">
+            <strong>Data & Infrastructure</strong>
+            <div class="chip-row">
+              <span class="chip">MySQL</span>
+              <span class="chip">MongoDB</span>
+              <span class="chip">Redis</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Jenkins</span>
+              <span class="chip">CI/CD</span>
+              <span class="chip">Linux</span>
+            </div>
+          </div>
+          <div class="card reveal">
+            <strong>Payments & Integrations</strong>
+            <div class="chip-row">
+              <span class="chip">PayPal</span>
+              <span class="chip">Stripe</span>
+              <span class="chip">SSLCommerz</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">OAuth 2.0</span>
+              <span class="chip">Webhooks</span>
+              <span class="chip">Kafka</span>
+              <span class="chip">RabbitMQ</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <h2>Experience</h2>
+        <div class="timeline">
+          <div class="card reveal">
+            <div class="role">
+              <div class="role-title">Senior Software Engineer</div>
+              <div class="role-meta">UY Systems Ltd · June 2023 – Present</div>
+              <ul>
+                <li>Tech Lead for SmartFlow and Taskiba platforms.</li>
+                <li>Architected scalable APIs and optimized performance.</li>
+                <li>Built CI/CD pipelines and Docker-based deployments.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="role">
+              <div class="role-title">DevOps Engineer</div>
+              <div class="role-meta">MyGov · Feb 2024 – Present</div>
+              <ul>
+                <li>Managed Oracle Cloud Linux infrastructure.</li>
+                <li>Automated deployments with Jenkins pipelines.</li>
+                <li>Dockerized services and improved monitoring.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="role">
+              <div class="role-title">Software Engineer</div>
+              <div class="role-meta">
+                Bangladesh National Portal · Jan 2021 – 2024
+              </div>
+              <ul>
+                <li>Lead developer for Smart Job Portal.</li>
+                <li>Built NPF Report Portal and data pipelines.</li>
+                <li>Backend development with Laravel & October CMS.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="role">
+              <div class="role-title">Junior Web Developer</div>
+              <div class="role-meta">RS Software · Nov 2019 – May 2021</div>
+              <ul>
+                <li>Developed with PHP, Laravel, CodeIgniter, MySQL.</li>
+                <li>Built Wordly, an English learning platform.</li>
+                <li>Integrated REST APIs and frontend UI work.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <h2>Notable Projects</h2>
+        <div class="grid two">
+          <div class="card reveal">
+            <div class="project-title">SmartFlow</div>
+            <p>
+              Enterprise project management system. Lead developer and architect
+              delivering Laravel + Vue 3 platform.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="project-title">Taskiba</div>
+            <p>
+              Task management platform with real-time workflows, Docker
+              deployment, and CI/CD automation.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="project-title">Bangladesh National Portal Systems</div>
+            <p>
+              PMS, Smart Job Portal, and NPF Report Portal for national
+              government services.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="project-title">Wordly Platform</div>
+            <p>
+              English learning platform built with PHP, Laravel, and MySQL with
+              interactive UI.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="project-title">Citizen Services Hub</div>
+            <p>
+              Service request intake and SLA tracking dashboard with role-based
+              access and audit trails.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="project-title">Support Insight Suite</div>
+            <p>
+              Internal analytics for support teams with event-driven pipelines
+              and live reporting.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="awards">
+        <h2>Awards & Recognition</h2>
+        <div class="grid three">
+          <div class="card reveal">
+            <div class="badge">Recognition</div>
+            <h3>Delivery Excellence Award</h3>
+            <p>
+              Recognized for leading large-scale platform delivery with
+              consistent uptime and measurable performance gains.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="badge">Impact</div>
+            <h3>Platform Reliability Champion</h3>
+            <p>
+              Drove CI/CD and infrastructure improvements that reduced release
+              risk and improved rollback speed.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="badge">Leadership</div>
+            <h3>Mentorship & Team Growth</h3>
+            <p>
+              Supported cross-team enablement through architecture guidance,
+              code reviews, and coaching.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <h2>Portfolio Snapshots</h2>
+        <p class="section-lead">
+          Sample interface snapshots and system views. Replace these with real
+          screenshots when ready.
+        </p>
+        <div class="gallery">
+          <div class="gallery-card reveal">
+            <svg viewBox="0 0 400 240" role="img" aria-label="Dashboard preview">
+              <rect width="400" height="240" fill="#e6f0f2"></rect>
+              <rect x="24" y="24" width="140" height="28" fill="#d06b3f"></rect>
+              <rect x="24" y="70" width="160" height="12" fill="#c2d7dc"></rect>
+              <rect x="24" y="96" width="120" height="12" fill="#c2d7dc"></rect>
+              <rect x="24" y="130" width="160" height="70" fill="#f5f1e8"></rect>
+              <rect x="210" y="70" width="166" height="130" fill="#ffffff"></rect>
+            </svg>
+            <div class="gallery-meta">
+              <strong>SmartFlow Dashboard</strong>
+              <div>Project overview with analytics and delivery status.</div>
+            </div>
+          </div>
+          <div class="gallery-card reveal">
+            <svg viewBox="0 0 400 240" role="img" aria-label="Task board preview">
+              <rect width="400" height="240" fill="#f5efe6"></rect>
+              <rect x="24" y="28" width="110" height="16" fill="#1f6f78"></rect>
+              <rect x="24" y="64" width="100" height="140" fill="#ffffff"></rect>
+              <rect x="150" y="64" width="100" height="140" fill="#ffffff"></rect>
+              <rect x="276" y="64" width="100" height="140" fill="#ffffff"></rect>
+              <rect x="36" y="82" width="76" height="12" fill="#d06b3f"></rect>
+            </svg>
+            <div class="gallery-meta">
+              <strong>Taskiba Board</strong>
+              <div>Kanban view for realtime task orchestration.</div>
+            </div>
+          </div>
+          <div class="gallery-card reveal">
+            <svg viewBox="0 0 400 240" role="img" aria-label="Portal preview">
+              <rect width="400" height="240" fill="#e9edf4"></rect>
+              <rect x="24" y="24" width="200" height="22" fill="#1f6f78"></rect>
+              <rect x="24" y="64" width="352" height="40" fill="#ffffff"></rect>
+              <rect x="24" y="116" width="170" height="90" fill="#ffffff"></rect>
+              <rect x="206" y="116" width="170" height="90" fill="#ffffff"></rect>
+            </svg>
+            <div class="gallery-meta">
+              <strong>Citizen Services</strong>
+              <div>National portal modules for service discovery.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="education">
+        <h2>Education & Languages</h2>
+        <div class="grid two">
+          <div class="card reveal">
+            <strong>BSc in Business Information Technology</strong>
+            <p>University of Greenwich (British Council) · 2014 – 2019</p>
+          </div>
+          <div class="card reveal">
+            <strong>Languages</strong>
+            <p>Bengali (Native), English (Professional).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <strong>Email</strong>
+            <div><a href="mailto:shovoua@gmail.com">shovoua@gmail.com</a></div>
+          </div>
+          <div class="contact-item">
+            <strong>Phone</strong>
+            <div><a href="tel:+8801762662171">+880 1762 662 171</a></div>
+          </div>
+          <div class="contact-item">
+            <strong>Website</strong>
+            <div><a href="http://ashadozzaman.com">ashadozzaman.com</a></div>
+          </div>
+          <div class="contact-item">
+            <strong>LinkedIn</strong>
+            <div>
+              <a href="https://www.linkedin.com/in/ashadozzaman-shvou-b5b603206"
+                >ashadozzaman-shvou</a
+              >
+            </div>
+          </div>
+          <div class="contact-item">
+            <strong>GitHub</strong>
+            <div><a href="https://github.com/ashadozzaman">ashadozzaman</a></div>
+          </div>
+          <div class="contact-item">
+            <strong>Location</strong>
+            <div>Dhaka, Bangladesh</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        Built as a single-page HTML portfolio · Available for leadership and
+        platform engineering roles.
+      </div>
+    </main>
+
+    <script>
+      const nav = document.getElementById("nav");
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+      const themeToggle = document.getElementById("themeToggle");
+      const root = document.documentElement;
+
+      const setTheme = (theme) => {
+        root.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+        themeToggle.textContent = theme === "dark" ? "Light" : "Dark";
+      };
+
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else {
+        setTheme("light");
+      }
+
+      menuToggle?.addEventListener("click", () => {
+        nav.classList.toggle("open");
+      });
+
+      navLinks?.addEventListener("click", () => {
+        nav.classList.remove("open");
+      });
+
+      themeToggle?.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme") || "light";
+        setTheme(current === "light" ? "dark" : "light");
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.18 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

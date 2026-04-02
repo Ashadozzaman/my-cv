@@ -18,25 +18,25 @@
         background: #eef2f7;
       }
       .sec-title {
-        font-size: 0.68rem;
+        font-size: 0.65rem;
         font-weight: 700;
         letter-spacing: 0.13em;
         text-transform: uppercase;
         color: #1e40af;
         border-bottom: 1.5px solid #bfdbfe;
-        padding-bottom: 5px;
-        margin-bottom: 11px;
+        padding-bottom: 4px;
+        margin-bottom: 9px;
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 5px;
       }
       .badge {
         display: inline-block;
-        font-size: 10.5px;
+        font-size: 10px;
         font-weight: 500;
-        padding: 2px 8px;
+        padding: 1.5px 7px;
         border-radius: 4px;
-        margin: 2px 2px;
+        margin: 1.5px 1.5px;
         border: 1px solid #bfdbfe;
         background: #eff6ff;
         color: #1e40af;
@@ -47,12 +47,12 @@
         border-color: #1e3a8a;
       }
       .dot {
-        width: 9px;
-        height: 9px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: #1d4ed8;
         flex-shrink: 0;
-        margin-top: 5px;
+        margin-top: 4px;
       }
       .vline {
         width: 1.5px;
@@ -64,8 +64,8 @@
         border: 1px solid #dbeafe;
         border-left: 3px solid #1d4ed8;
         background: #f8faff;
-        border-radius: 6px;
-        padding: 7px 11px;
+        border-radius: 5px;
+        padding: 5px 9px;
       }
       .cv-body {
         display: flex;
@@ -87,6 +87,7 @@
       .spacer {
         flex: 1;
       }
+
       @media print {
         html,
         body {
@@ -94,6 +95,7 @@
           margin: 0 !important;
           padding: 0 !important;
           width: 210mm !important;
+          height: 297mm !important;
         }
         body {
           -webkit-print-color-adjust: exact;
@@ -106,27 +108,45 @@
           box-shadow: none !important;
           border-radius: 0 !important;
           margin: 0 !important;
-          max-width: 210mm !important;
           width: 210mm !important;
-          overflow: visible !important;
+          max-width: 210mm !important;
+          height: 297mm !important;
+          max-height: 297mm !important;
+          overflow: hidden !important;
+          display: flex;
+          flex-direction: column;
         }
         .cv-header {
           page-break-inside: avoid;
           break-inside: avoid;
+          flex-shrink: 0;
+        }
+        .cv-body {
+          flex: 1;
+          overflow: hidden;
+        }
+        .cv-left,
+        .cv-right {
+          overflow: hidden;
+        }
+        .cv-right-inner {
+          overflow: hidden;
         }
         .photo-wrap {
-          width: 100px !important;
-          height: 100px !important;
-          min-width: 100px !important;
-          min-height: 100px !important;
+          width: 88px !important;
+          height: 88px !important;
+          min-width: 88px !important;
+          min-height: 88px !important;
           flex-shrink: 0 !important;
           overflow: hidden !important;
+          border-radius: 50% !important;
         }
         .photo-wrap img {
-          width: 100px !important;
-          height: 100px !important;
+          width: 88px !important;
+          height: 88px !important;
           object-fit: cover !important;
           object-position: top center !important;
+          display: block !important;
         }
         @page {
           size: A4;
@@ -164,27 +184,27 @@
     >
       <!-- HEADER -->
       <div
-        class="cv-header bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 px-9 py-5 flex items-center justify-between gap-6"
+        class="cv-header bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 px-8 py-6 flex items-center justify-between gap-6"
       >
         <div class="flex-1 min-w-0">
           <p
-            class="text-blue-300 text-[10px] font-semibold uppercase tracking-widest mb-1"
+            class="text-blue-300 text-[9.5px] font-semibold uppercase tracking-widest mb-0.5"
           >
             Senior Software Engineer
           </p>
           <h1
-            class="text-[26px] font-bold text-white leading-tight"
+            class="text-[24px] font-bold text-white leading-tight"
             style="font-family: &quot;Playfair Display&quot;, serif"
           >
             Md. Ashadozzaman Shuvo
           </h1>
           <div
-            class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2.5 text-blue-200 text-[10.5px]"
+            class="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-2 text-blue-200 text-[10px]"
           >
             <span class="flex items-center gap-1.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3 w-3 flex-shrink-0"
+                class="h-2.5 w-2.5 flex-shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -204,11 +224,10 @@
               </svg>
               Dhaka, Bangladesh
             </span>
-
             <span class="flex items-center gap-1.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3 w-3 flex-shrink-0"
+                class="h-2.5 w-2.5 flex-shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -225,7 +244,7 @@
             <span class="flex items-center gap-1.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3 w-3 flex-shrink-0"
+                class="h-2.5 w-2.5 flex-shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -239,14 +258,10 @@
               </svg>
               01762662171
             </span>
-          </div>
-          <div
-            class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2.5 text-blue-200 text-[10.5px]"
-          >
             <span class="flex items-center gap-1.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3 w-3 flex-shrink-0"
+                class="h-2.5 w-2.5 flex-shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -265,7 +280,7 @@
             <span class="flex items-center gap-1.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3 w-3 flex-shrink-0"
+                class="h-2.5 w-2.5 flex-shrink-0"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -276,13 +291,13 @@
               <a
                 href="https://www.linkedin.com/in/ashadozzaman-shvou-b5b603206"
                 target="_blank"
-                >Linkedin</a
+                >LinkedIn</a
               >
             </span>
             <span class="flex items-center gap-1.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3 w-3 flex-shrink-0"
+                class="h-2.5 w-2.5 flex-shrink-0"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -297,31 +312,33 @@
           </div>
         </div>
         <div
-          class="w-32 h-34 rounded-full border-4 border-white/30 overflow-hidden bg-white/10 flex items-center justify-center"
+          class="photo-wrap flex-shrink-0"
+          style="
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+          "
         >
-          <!-- <img
-            src="https://raw.githubusercontent.com/Ashadozzaman/my-cv/refs/heads/main/asad-cv.png"
-            alt=""
-          /> -->
           <img
-            src="https://raw.githubusercontent.com/Ashadozzaman/my-cv/refs/heads/main/asad-cv.jpeg"
-            alt=""
+            src="data:image/jpeg;base64,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"
+            alt="Md. Ashadozzaman"
           />
         </div>
       </div>
 
       <!-- BODY -->
       <div class="cv-body">
-        <!-- ══ LEFT COLUMN ══ -->
+        <!-- LEFT -->
         <div
-          class="cv-left w-[284px] flex-shrink-0 bg-[#f7f9ff] border-r border-blue-100 px-5 py-5 gap-5"
+          class="cv-left w-[272px] flex-shrink-0 bg-[#f7f9ff] border-r border-blue-100 px-4 py-4"
         >
-          <!-- Summary -->
           <div>
             <p class="sec-title">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3.5 w-3.5"
+                class="h-3 w-3"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -335,22 +352,21 @@
               </svg>
               Summary
             </p>
-            <p class="text-[11px] leading-relaxed text-slate-600">
+            <p class="text-[10.5px] leading-relaxed text-slate-600 mb-4">
               Senior Software Engineer with <strong>6+ years</strong> building
               scalable backend systems using
-              <strong>Laravel, Inertia.js, Vue & React</strong>. Strong DevOps
-              expertise with Docker, Jenkins, CI/CD, and Oracle Cloud. Proven on
-              government-grade large-scale platforms and enterprise
+              <strong>Laravel, Inertia.js, Vue &amp; React</strong>. Strong
+              DevOps expertise with Docker, Jenkins, CI/CD, and Oracle Cloud.
+              Proven on government-grade large-scale platforms and enterprise
               architecture.
             </p>
           </div>
 
-          <!-- Tech Stack -->
-          <div class="mt-5">
+          <div>
             <p class="sec-title">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3.5 w-3.5"
+                class="h-3 w-3"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -364,10 +380,10 @@
               </svg>
               Tech Stack
             </p>
-            <div class="space-y-2.5 text-[11px]">
+            <div class="space-y-2 text-[10.5px] mb-4">
               <div>
                 <p
-                  class="text-[9px] uppercase tracking-widest text-blue-400 font-semibold mb-1"
+                  class="text-[8.5px] uppercase tracking-widest text-blue-400 font-semibold mb-0.5"
                 >
                   Backend
                 </p>
@@ -377,7 +393,7 @@
               </div>
               <div>
                 <p
-                  class="text-[9px] uppercase tracking-widest text-blue-400 font-semibold mb-1"
+                  class="text-[8.5px] uppercase tracking-widest text-blue-400 font-semibold mb-0.5"
                 >
                   Frontend
                 </p>
@@ -387,7 +403,7 @@
               </div>
               <div>
                 <p
-                  class="text-[9px] uppercase tracking-widest text-blue-400 font-semibold mb-1"
+                  class="text-[8.5px] uppercase tracking-widest text-blue-400 font-semibold mb-0.5"
                 >
                   Database
                 </p>
@@ -397,9 +413,9 @@
               </div>
               <div>
                 <p
-                  class="text-[9px] uppercase tracking-widest text-blue-400 font-semibold mb-1"
+                  class="text-[8.5px] uppercase tracking-widest text-blue-400 font-semibold mb-0.5"
                 >
-                  DevOps & Cloud
+                  DevOps &amp; Cloud
                 </p>
                 <span class="badge">Docker</span
                 ><span class="badge">Jenkins</span
@@ -410,12 +426,11 @@
             </div>
           </div>
 
-          <!-- ✦ Core Strengths moved to LEFT ✦ -->
-          <div class="mt-5">
+          <div>
             <p class="sec-title">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3.5 w-3.5"
+                class="h-3 w-3"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -429,7 +444,7 @@
               </svg>
               Core Strengths
             </p>
-            <div>
+            <div class="mb-4">
               <span class="badge badge-dark">System Architecture</span>
               <span class="badge badge-dark">API Design</span>
               <span class="badge badge-dark">Performance Tuning</span>
@@ -440,12 +455,11 @@
             </div>
           </div>
 
-          <!-- Education -->
-          <div class="mt-5">
+          <div>
             <p class="sec-title">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3.5 w-3.5"
+                class="h-3 w-3"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -460,20 +474,19 @@
               </svg>
               Education
             </p>
-            <p class="text-[11.5px] font-semibold text-slate-700">
+            <p class="text-[11px] font-semibold text-slate-700 mb-0.5">
               BSc in Business Information Technology
             </p>
-            <p class="text-[10px] text-slate-400">
+            <p class="text-[9.5px] text-slate-400 mb-4">
               University of Greenwich, through British Council · 2014–2019
             </p>
           </div>
 
-          <!-- Languages -->
-          <div class="mt-5">
+          <div>
             <p class="sec-title">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-3.5 w-3.5"
+                class="h-3 w-3"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -487,9 +500,9 @@
               </svg>
               Languages
             </p>
-            <div class="space-y-2">
+            <div class="space-y-1.5">
               <div class="flex items-center justify-between">
-                <span class="text-[11px] text-slate-600 font-medium"
+                <span class="text-[10.5px] text-slate-600 font-medium"
                   >Bengali</span
                 >
                 <div class="flex gap-0.5">
@@ -499,12 +512,12 @@
                   ><span class="w-3 h-1.5 rounded-sm bg-blue-700"></span
                   ><span class="w-3 h-1.5 rounded-sm bg-blue-700"></span>
                 </div>
-                <span class="text-[9.5px] text-blue-400 font-semibold"
+                <span class="text-[9px] text-blue-400 font-semibold"
                   >Native</span
                 >
               </div>
               <div class="flex items-center justify-between">
-                <span class="text-[11px] text-slate-600 font-medium"
+                <span class="text-[10.5px] text-slate-600 font-medium"
                   >English</span
                 >
                 <div class="flex gap-0.5">
@@ -514,7 +527,7 @@
                   ><span class="w-3 h-1.5 rounded-sm bg-blue-700"></span
                   ><span class="w-3 h-1.5 rounded-sm bg-blue-200"></span>
                 </div>
-                <span class="text-[9.5px] text-blue-400 font-semibold"
+                <span class="text-[9px] text-blue-400 font-semibold"
                   >Professional</span
                 >
               </div>
@@ -523,15 +536,15 @@
         </div>
         <!-- /LEFT -->
 
-        <!-- ══ RIGHT COLUMN ══ -->
-        <div class="cv-right flex-1 px-6 py-5">
+        <!-- RIGHT -->
+        <div class="cv-right flex-1 px-5 py-4">
           <div class="cv-right-inner">
             <!-- Work Experience -->
             <div>
               <p class="sec-title">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-3.5 w-3.5"
+                  class="h-3 w-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -545,30 +558,30 @@
                 </svg>
                 Work Experience
               </p>
-              <div class="space-y-4">
-                <div class="flex gap-3">
+              <div class="space-y-3">
+                <div class="flex gap-2.5">
                   <div class="flex flex-col items-center w-4">
                     <div class="dot"></div>
                     <div class="vline"></div>
                   </div>
-                  <div class="flex-1 pb-1">
+                  <div class="flex-1 pb-0.5">
                     <div
-                      class="flex items-start justify-between flex-wrap gap-1 mb-1"
+                      class="flex items-start justify-between flex-wrap gap-1 mb-0.5"
                     >
                       <div>
-                        <p class="text-[12px] font-semibold text-blue-900">
+                        <p class="text-[11.5px] font-semibold text-blue-900">
                           Senior Software Engineer
                         </p>
-                        <p class="text-[10.5px] font-medium text-blue-600">
+                        <p class="text-[10px] font-medium text-blue-600">
                           UY Systems Ltd
                         </p>
                       </div>
                       <span
-                        class="text-[9.5px] bg-blue-50 border border-blue-200 text-blue-700 px-2 py-0.5 rounded font-medium"
+                        class="text-[9px] bg-blue-50 border border-blue-200 text-blue-700 px-2 py-0.5 rounded font-medium"
                         >June 2023 – Present</span
                       >
                     </div>
-                    <ul class="text-[11px] text-slate-500 space-y-0.5">
+                    <ul class="text-[10.5px] text-slate-500 space-y-0.5">
                       <li class="flex gap-1.5">
                         <span class="text-blue-400 mt-0.5 flex-shrink-0">▸</span
                         ><span
@@ -589,44 +602,38 @@
                       <li class="flex gap-1.5">
                         <span class="text-blue-400 mt-0.5 flex-shrink-0">▸</span
                         ><span
-                          >Established CI/CD pipelines and Docker-based cloud
-                          deployment workflows</span
-                        >
-                      </li>
-                      <li class="flex gap-1.5">
-                        <span class="text-blue-400 mt-0.5 flex-shrink-0">▸</span
-                        ><span
-                          >System architecture design, performance optimization,
-                          and scalable API development</span
+                          >CI/CD pipelines, Docker-based cloud deployment,
+                          system architecture &amp; scalable API
+                          development</span
                         >
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <div class="flex gap-3">
+                <div class="flex gap-2.5">
                   <div class="flex flex-col items-center w-4">
                     <div class="dot"></div>
                     <div class="vline"></div>
                   </div>
-                  <div class="flex-1 pb-1">
+                  <div class="flex-1 pb-0.5">
                     <div
-                      class="flex items-start justify-between flex-wrap gap-1 mb-1"
+                      class="flex items-start justify-between flex-wrap gap-1 mb-0.5"
                     >
                       <div>
-                        <p class="text-[12px] font-semibold text-blue-900">
+                        <p class="text-[11.5px] font-semibold text-blue-900">
                           DevOps Engineer
                         </p>
-                        <p class="text-[10.5px] font-medium text-blue-600">
+                        <p class="text-[10px] font-medium text-blue-600">
                           MyGov — Government Digital Platform
                         </p>
                       </div>
                       <span
-                        class="text-[9.5px] bg-blue-50 border border-blue-200 text-blue-700 px-2 py-0.5 rounded font-medium"
+                        class="text-[9px] bg-blue-50 border border-blue-200 text-blue-700 px-2 py-0.5 rounded font-medium"
                         >Feb 2024 – Present</span
                       >
                     </div>
-                    <ul class="text-[11px] text-slate-500 space-y-0.5">
+                    <ul class="text-[10.5px] text-slate-500 space-y-0.5">
                       <li class="flex gap-1.5">
                         <span class="text-blue-400 mt-0.5 flex-shrink-0">▸</span
                         ><span
@@ -637,44 +644,37 @@
                       <li class="flex gap-1.5">
                         <span class="text-blue-400 mt-0.5 flex-shrink-0">▸</span
                         ><span
-                          >Built and maintained Jenkins pipelines for automated
-                          CI/CD deployments</span
-                        >
-                      </li>
-                      <li class="flex gap-1.5">
-                        <span class="text-blue-400 mt-0.5 flex-shrink-0">▸</span
-                        ><span
-                          >Docker containerization of all services; production
-                          monitoring & optimization</span
+                          >Jenkins CI/CD pipelines; Docker containerization,
+                          production monitoring &amp; optimization</span
                         >
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <div class="flex gap-3">
+                <div class="flex gap-2.5">
                   <div class="flex flex-col items-center w-4">
                     <div class="dot"></div>
                     <div class="vline"></div>
                   </div>
-                  <div class="flex-1 pb-1">
+                  <div class="flex-1 pb-0.5">
                     <div
-                      class="flex items-start justify-between flex-wrap gap-1 mb-1"
+                      class="flex items-start justify-between flex-wrap gap-1 mb-0.5"
                     >
                       <div>
-                        <p class="text-[12px] font-semibold text-blue-900">
+                        <p class="text-[11.5px] font-semibold text-blue-900">
                           Software Engineer
                         </p>
-                        <p class="text-[10.5px] font-medium text-blue-600">
+                        <p class="text-[10px] font-medium text-blue-600">
                           Bangladesh National Portal
                         </p>
                       </div>
                       <span
-                        class="text-[9.5px] bg-blue-50 border border-blue-200 text-blue-700 px-2 py-0.5 rounded font-medium"
+                        class="text-[9px] bg-blue-50 border border-blue-200 text-blue-700 px-2 py-0.5 rounded font-medium"
                         >Jan 2021 – 2024</span
                       >
                     </div>
-                    <ul class="text-[11px] text-slate-500 space-y-0.5">
+                    <ul class="text-[10.5px] text-slate-500 space-y-0.5">
                       <li class="flex gap-1.5">
                         <span class="text-blue-400 mt-0.5 flex-shrink-0">▸</span
                         ><span
@@ -691,49 +691,41 @@
                           >Built
                           <strong class="text-slate-600"
                             >NPF Report Portal</strong
-                          >
-                          with complex report generation and data
-                          pipelines</span
-                        >
-                      </li>
-                      <li class="flex gap-1.5">
-                        <span class="text-blue-400 mt-0.5 flex-shrink-0">▸</span
-                        ><span
-                          >Backend development with Laravel & October CMS;
-                          database performance tuning</span
+                          >; Laravel &amp; October CMS; database performance
+                          tuning</span
                         >
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <div class="flex gap-3">
+                <div class="flex gap-2.5">
                   <div class="flex flex-col items-center w-4">
                     <div class="dot"></div>
                   </div>
                   <div class="flex-1">
                     <div
-                      class="flex items-start justify-between flex-wrap gap-1 mb-1"
+                      class="flex items-start justify-between flex-wrap gap-1 mb-0.5"
                     >
                       <div>
-                        <p class="text-[12px] font-semibold text-blue-900">
+                        <p class="text-[11.5px] font-semibold text-blue-900">
                           Junior Web Developer
                         </p>
-                        <p class="text-[10.5px] font-medium text-blue-600">
+                        <p class="text-[10px] font-medium text-blue-600">
                           RS Software
                         </p>
                       </div>
                       <span
-                        class="text-[9.5px] bg-blue-50 border border-blue-200 text-blue-700 px-2 py-0.5 rounded font-medium"
+                        class="text-[9px] bg-blue-50 border border-blue-200 text-blue-700 px-2 py-0.5 rounded font-medium"
                         >Nov 2019 – May 2021</span
                       >
                     </div>
-                    <ul class="text-[11px] text-slate-500 space-y-0.5">
+                    <ul class="text-[10.5px] text-slate-500 space-y-0.5">
                       <li class="flex gap-1.5">
                         <span class="text-blue-400 mt-0.5 flex-shrink-0">▸</span
                         ><span
-                          >Development using PHP, Laravel & CodeIgniter; MySQL
-                          application development</span
+                          >Development using PHP, Laravel &amp; CodeIgniter;
+                          MySQL application development</span
                         >
                       </li>
                       <li class="flex gap-1.5">
@@ -741,15 +733,8 @@
                         ><span
                           >Built
                           <strong class="text-slate-600">Wordly</strong> —
-                          English learning platform with PHP & MySQL
-                          backend</span
-                        >
-                      </li>
-                      <li class="flex gap-1.5">
-                        <span class="text-blue-400 mt-0.5 flex-shrink-0">▸</span
-                        ><span
-                          >Frontend development using Bootstrap & jQuery; REST
-                          API integration</span
+                          English learning platform; Bootstrap &amp; jQuery
+                          frontend</span
                         >
                       </li>
                     </ul>
@@ -758,14 +743,14 @@
               </div>
             </div>
 
-            <!-- <div class="border-t border-dashed border-blue-100 mt-5"></div> -->
+            <div class="border-t border-dashed border-blue-100 mt-3"></div>
 
-            <!-- ✦ Notable Projects moved to RIGHT ✦ -->
-            <div class="mt-5">
+            <!-- Notable Projects -->
+            <div class="mt-3">
               <p class="sec-title">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-3.5 w-3.5"
+                  class="h-3 w-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -779,95 +764,49 @@
                 </svg>
                 Notable Projects
               </p>
-              <!-- 2-column grid so projects sit neatly in the wider right panel -->
-              <div class="grid grid-cols-2 gap-2">
+              <div class="grid grid-cols-2 gap-1.5">
                 <div class="proj-card">
-                  <p class="text-[11px] font-semibold text-blue-900">
+                  <p class="text-[10.5px] font-semibold text-blue-900">
                     SmartFlow
                   </p>
-                  <p class="text-[10px] text-slate-500 mt-0.5">
-                    Enterprise Project Management System. Lead developer &
-                    architect. Laravel + Vue.
+                  <p class="text-[9.5px] text-slate-500 mt-0.5">
+                    Enterprise Project Management System. Tech Lead. Laravel +
+                    Vue 3.
                   </p>
                 </div>
                 <div class="proj-card">
-                  <p class="text-[11px] font-semibold text-blue-900">Taskiba</p>
-                  <p class="text-[10px] text-slate-500 mt-0.5">
-                    Task Management Platform with real-time features, Docker
-                    deployment & CI/CD.
+                  <p class="text-[10.5px] font-semibold text-blue-900">
+                    Taskiba
+                  </p>
+                  <p class="text-[9.5px] text-slate-500 mt-0.5">
+                    Task Management Platform — real-time features, Docker &amp;
+                    CI/CD.
                   </p>
                 </div>
                 <div class="proj-card">
-                  <p class="text-[11px] font-semibold text-blue-900">
-                    Bangladesh National Portal Systems
+                  <p class="text-[10.5px] font-semibold text-blue-900">
+                    Bangladesh National Portal
                   </p>
-                  <p class="text-[10px] text-slate-500 mt-0.5">
-                    PMS, Smart Job Portal & NPF Report Portal for the national
-                    government. Laravel & October CMS.
+                  <p class="text-[9.5px] text-slate-500 mt-0.5">
+                    PMS, Smart Job Portal &amp; NPF Report Portal. Laravel &amp;
+                    October CMS.
                   </p>
                 </div>
                 <div class="proj-card">
-                  <p class="text-[11px] font-semibold text-blue-900">
+                  <p class="text-[10.5px] font-semibold text-blue-900">
                     Wordly Platform
                   </p>
-                  <p class="text-[10px] text-slate-500 mt-0.5">
-                    English learning platform — PHP, Laravel & MySQL with
-                    interactive UI.
+                  <p class="text-[9.5px] text-slate-500 mt-0.5">
+                    English learning platform — PHP, Laravel &amp; MySQL
+                    backend.
                   </p>
                 </div>
               </div>
             </div>
 
-            <!-- Payment & Integrations -->
-            <div class="mt-5">
+            <!-- Payments & Integrations -->
+            <div class="mt-3">
               <p class="sec-title">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-3.5 w-3.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                  />
-                </svg>
-                Payments, APIs & Event-Driven Systems
-              </p>
-              <div>
-                <span class="badge">PayPal</span>
-                <span class="badge">Stripe</span>
-                <span class="badge">SSLCommerz</span>
-                <span class="badge">REST APIs</span>
-                <span class="badge">OAuth 2.0</span>
-                <span class="badge">Webhooks</span>
-                <span class="badge">Third-party SDKs</span>
-                <span class="badge">Reverb</span>
-                <span class="badge">Kafka</span>
-                <span class="badge">RabbitMQ</span>
-                <span class="badge">Laravel Horizon</span>
-              </div>
-            </div>
-
-            <!-- <div class="spacer"></div> -->
-
-            <!-- Footer -->
-            <!-- <div
-              class="border-t border-blue-100 pt-3 mt-4 flex items-center justify-between text-[10px] text-slate-400"
-            >
-              <span
-                >Md. Ashadozzaman ·
-                <a
-                  href="https://ashadozzaman.com"
-                  target="_blank"
-                  class="text-blue-500"
-                  >ashadozzaman.com</a
-                ></span
-              >
-              <span class="flex items-center gap-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-3 w-3"
@@ -879,12 +818,59 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
+                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                  />
+                </svg>
+                Payments, APIs &amp; Event-Driven Systems
+              </p>
+              <div>
+                <span class="badge">PayPal</span
+                ><span class="badge">Stripe</span
+                ><span class="badge">SSLCommerz</span>
+                <span class="badge">REST APIs</span
+                ><span class="badge">OAuth 2.0</span
+                ><span class="badge">Webhooks</span>
+                <span class="badge">Third-party SDKs</span
+                ><span class="badge">Reverb</span
+                ><span class="badge">Kafka</span>
+                <span class="badge">RabbitMQ</span
+                ><span class="badge">Laravel Horizon</span>
+              </div>
+            </div>
+
+            <div class="spacer"></div>
+
+            <!-- Footer -->
+            <div
+              class="border-t border-blue-100 pt-2 mt-3 flex items-center justify-between text-[9.5px] text-slate-400"
+            >
+              <span
+                >Md. Ashadozzaman Shuvo ·
+                <a
+                  href="https://ashadozzaman.com"
+                  target="_blank"
+                  class="text-blue-500"
+                  >ashadozzaman.com</a
+                ></span
+              >
+              <span class="flex items-center gap-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-2.5 w-2.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
-                Updated February 2026
+                Updated April 2026
               </span>
-            </div> -->
+            </div>
           </div>
         </div>
         <!-- /RIGHT -->

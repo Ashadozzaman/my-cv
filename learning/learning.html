@@ -1,0 +1,1657 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14-Day Node.js Mastery Plan — Ashadozzaman</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0a0f;
+        --bg2: #111118;
+        --bg3: #16161f;
+        --border: rgba(255, 255, 255, 0.07);
+        --border2: rgba(255, 255, 255, 0.12);
+        --text: #f0f0f8;
+        --muted: #7a7a9a;
+        --dim: #4a4a6a;
+        --green: #00e5a0;
+        --green-dim: rgba(0, 229, 160, 0.1);
+        --green-mid: rgba(0, 229, 160, 0.2);
+        --blue: #4db8ff;
+        --blue-dim: rgba(77, 184, 255, 0.1);
+        --amber: #ffb347;
+        --amber-dim: rgba(255, 179, 71, 0.1);
+        --purple: #b47fff;
+        --purple-dim: rgba(180, 127, 255, 0.1);
+        --red: #ff6b7a;
+        --red-dim: rgba(255, 107, 122, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* Grid noise texture */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0, 229, 160, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 229, 160, 0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* HEADER */
+      header {
+        padding: 40px 0 32px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 40px;
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .header-left {
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--green);
+        border: 1px solid rgba(0, 229, 160, 0.3);
+        background: var(--green-dim);
+        padding: 5px 12px;
+        border-radius: 4px;
+        letter-spacing: 0.08em;
+        margin-bottom: 16px;
+      }
+
+      .badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--green);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      h1 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(28px, 4vw, 52px);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      h1 span {
+        color: var(--green);
+      }
+
+      .header-sub {
+        font-size: 14px;
+        color: var(--muted);
+        margin-top: 10px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 300;
+      }
+
+      .stats-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .stat-pill {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 12px 18px;
+        text-align: center;
+        min-width: 90px;
+      }
+
+      .stat-num {
+        font-family: "Syne", sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .stat-num.green {
+        color: var(--green);
+      }
+      .stat-num.blue {
+        color: var(--blue);
+      }
+      .stat-num.amber {
+        color: var(--amber);
+      }
+
+      .stat-label {
+        font-size: 10px;
+        color: var(--muted);
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.06em;
+        margin-top: 2px;
+      }
+
+      /* WEEK TABS */
+      .week-tabs {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 28px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 4px;
+        width: fit-content;
+      }
+
+      .week-tab {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 9px 22px;
+        border-radius: 7px;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        transition: all 0.2s;
+        letter-spacing: 0.02em;
+      }
+
+      .week-tab.active {
+        background: var(--bg3);
+        color: var(--text);
+        border: 1px solid var(--border2);
+      }
+
+      /* MAIN LAYOUT */
+      .main-layout {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 20px;
+        align-items: start;
+      }
+
+      @media (max-width: 900px) {
+        .main-layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* DAY LIST */
+      .day-list {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        position: sticky;
+        top: 24px;
+      }
+
+      .day-list-header {
+        padding: 16px 18px;
+        border-bottom: 1px solid var(--border);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 500;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .day-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 18px;
+        cursor: pointer;
+        border-bottom: 1px solid var(--border);
+        transition: background 0.15s;
+        position: relative;
+      }
+
+      .day-item:last-child {
+        border-bottom: none;
+      }
+      .day-item:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .day-item.active {
+        background: var(--green-dim);
+      }
+
+      .day-item.active::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--green);
+        border-radius: 0 2px 2px 0;
+      }
+
+      .day-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--dim);
+        width: 24px;
+        flex-shrink: 0;
+      }
+
+      .day-item.active .day-num {
+        color: var(--green);
+      }
+
+      .day-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .day-title {
+        font-family: "Syne", sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.15s;
+      }
+
+      .day-item.active .day-title,
+      .day-item:hover .day-title {
+        color: var(--text);
+      }
+
+      .day-type-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      /* DETAIL PANEL */
+      .detail-panel {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+
+      .detail-hero {
+        padding: 28px 32px;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .detail-hero::after {
+        content: attr(data-day);
+        position: absolute;
+        right: -10px;
+        top: -20px;
+        font-family: "Syne", sans-serif;
+        font-size: 120px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.03);
+        pointer-events: none;
+        line-height: 1;
+      }
+
+      .detail-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .type-badge {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 500;
+        padding: 4px 10px;
+        border-radius: 4px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .type-learn {
+        background: var(--blue-dim);
+        color: var(--blue);
+        border: 1px solid rgba(77, 184, 255, 0.2);
+      }
+      .type-build {
+        background: var(--green-dim);
+        color: var(--green);
+        border: 1px solid rgba(0, 229, 160, 0.2);
+      }
+      .type-review {
+        background: var(--purple-dim);
+        color: var(--purple);
+        border: 1px solid rgba(180, 127, 255, 0.2);
+      }
+      .type-job {
+        background: var(--amber-dim);
+        color: var(--amber);
+        border: 1px solid rgba(255, 179, 71, 0.2);
+      }
+
+      .detail-day-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      .detail-title {
+        font-family: "Syne", sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--text);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        margin-bottom: 8px;
+      }
+
+      .detail-subtitle {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* GOALS */
+      .goals-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 20px 32px;
+        border-bottom: 1px solid var(--border);
+        background: var(--bg3);
+      }
+
+      .goal-chip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--muted);
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 5px 12px;
+        transition: border-color 0.15s;
+      }
+
+      .goal-chip::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--green);
+        flex-shrink: 0;
+      }
+
+      /* SCHEDULE BLOCKS */
+      .schedule-body {
+        padding: 24px 32px;
+      }
+
+      .section-header {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 500;
+        color: var(--dim);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .time-blocks {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .time-block {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 16px;
+        align-items: start;
+        padding: 14px 16px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--bg3);
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+
+      .time-block:hover {
+        border-color: var(--border2);
+        transform: translateX(2px);
+      }
+
+      .time-block.morning {
+        border-left: 3px solid var(--amber);
+      }
+      .time-block.afternoon {
+        border-left: 3px solid var(--blue);
+      }
+      .time-block.evening {
+        border-left: 3px solid var(--green);
+      }
+      .time-block.break-block {
+        border-left: 3px solid var(--dim);
+        opacity: 0.5;
+      }
+
+      .time-slot {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--muted);
+        padding-top: 2px;
+      }
+
+      .time-period {
+        font-size: 9px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-top: 3px;
+      }
+
+      .tp-morning {
+        color: var(--amber);
+      }
+      .tp-afternoon {
+        color: var(--blue);
+      }
+      .tp-evening {
+        color: var(--green);
+      }
+
+      .block-content {
+      }
+
+      .block-title {
+        font-family: "Syne", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+
+      .block-sub {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* PROGRESS BAR */
+      .progress-section {
+        padding: 20px 32px;
+        border-top: 1px solid var(--border);
+        background: var(--bg3);
+      }
+
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .progress-bar {
+        height: 3px;
+        background: var(--border);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--green), var(--blue));
+        border-radius: 2px;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* FOOTER TIPS */
+      .tips-bar {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+      }
+
+      .tip-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px 18px;
+      }
+
+      .tip-icon {
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .tip-title {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+
+      .tip-text {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* SCROLLBAR */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border2);
+        border-radius: 2px;
+      }
+
+      /* ANIMATIONS */
+      .detail-panel {
+        animation: fadeIn 0.25s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 0.25s ease forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-inner">
+          <div class="header-left">
+            <div class="badge">
+              <span class="badge-dot"></span> 14-DAY SPRINT · STARTS TODAY
+            </div>
+            <h1>Node.js<br /><span>Mastery Plan</span></h1>
+            <div class="header-sub">
+              // Md. Ashadozzaman · Senior Software Engineer · PHP → Node.js
+            </div>
+          </div>
+          <div class="stats-row">
+            <div class="stat-pill">
+              <div class="stat-num green">14</div>
+              <div class="stat-label">DAYS</div>
+            </div>
+            <div class="stat-pill">
+              <div class="stat-num blue">1</div>
+              <div class="stat-label">LIVE PROJECT</div>
+            </div>
+            <div class="stat-pill">
+              <div class="stat-num amber">30+</div>
+              <div class="stat-label">JOB APPS</div>
+            </div>
+            <div class="stat-pill">
+              <div class="stat-num" style="color: var(--purple)">8h</div>
+              <div class="stat-label">DAILY</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="week-tabs">
+        <button class="week-tab active" onclick="switchWeek(1)">
+          Week 1 — Foundations
+        </button>
+        <button class="week-tab" onclick="switchWeek(2)">
+          Week 2 — Build & Deploy
+        </button>
+      </div>
+
+      <div class="main-layout">
+        <div class="day-list">
+          <div class="day-list-header">SCHEDULE</div>
+          <div id="day-list-inner"></div>
+        </div>
+
+        <div class="detail-panel" id="detail-panel"></div>
+      </div>
+
+      <div class="tips-bar">
+        <div class="tip-card">
+          <div class="tip-icon">⚡</div>
+          <div class="tip-title">Your Laravel skills transfer</div>
+          <div class="tip-text">
+            Eloquent → Prisma. Horizon → BullMQ. Middleware → Middleware. You're
+            not starting from zero — you're translating.
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔍</div>
+          <div class="tip-title">Keep applying to Laravel roles</div>
+          <div class="tip-text">
+            Senior Laravel + DevOps on government-scale systems is rare. Don't
+            pause your PHP job search while learning Node.
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🚀</div>
+          <div class="tip-title">The project beats the tutorial</div>
+          <div class="tip-text">
+            The Job Board on Days 8–12 is your proof of work. Clean code, tests,
+            live URL, good README = interview gold.
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📝</div>
+          <div class="tip-title">Week 3+ path</div>
+          <div class="tip-text">
+            After this sprint: TypeScript (critical), NestJS (Laravel-like Node
+            framework), or WebSockets. Pick one and go deep.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const weeks = {
+        1: [
+          {
+            label: "Day 1",
+            name: "Environment Setup",
+            type: "learn",
+            color: "#4db8ff",
+            focus: "Node.js + Tooling Setup",
+            subtitle:
+              "Lay the foundation — get everything installed and understand how Node differs from PHP.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Morning review & planning",
+                sub: "Write today's goals. List your PHP strengths so you can consciously map them to Node equivalents.",
+              },
+              {
+                time: "9:00–12:00",
+                period: "morning",
+                text: "Install & configure Node environment",
+                sub: "Install Node.js (LTS), nvm, VS Code extensions (ESLint, Prettier). Understand npm vs Composer. Set up a clean project folder structure.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Node.js core concepts — tutorial",
+                sub: "Event loop, non-blocking I/O, modules (CommonJS vs ESM). Map every concept to your PHP mental model.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Update LinkedIn headline. Write a 2-line open-to-work note. Apply to 2 backend roles — Laravel is still your primary strength.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Practice: write 5 small Node scripts",
+                sub: "File I/O, HTTP module, async/await, setTimeout, require vs import. Experiment freely.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Rest & reflection",
+                sub: "Write 3 things learned. Note confusions to resolve tomorrow.",
+              },
+            ],
+            goals: [
+              "nvm + Node LTS installed",
+              "5 practice scripts written",
+              "2 job applications sent",
+            ],
+          },
+          {
+            label: "Day 2",
+            name: "Express.js Basics",
+            type: "learn",
+            color: "#4db8ff",
+            focus: "Express.js — Your Laravel Equivalent",
+            subtitle:
+              "Express is to Node what Laravel is to PHP. Lean hard on your existing mental model.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Review Day 1 confusion points",
+                sub: "Look up anything you marked. Skim Node docs on the event loop one more time.",
+              },
+              {
+                time: "9:00–12:00",
+                period: "morning",
+                text: "Express.js deep dive",
+                sub: "Install Express, build basic server, routing (GET/POST/PUT/DELETE), middleware (like Laravel middleware), and error handling.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Tutorial: REST API with Express",
+                sub: "Follow along — build a minimal REST API. No DB yet, just JSON responses. Map routes to your Laravel route/controller pattern.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Apply to 2–3 roles. Research companies. Look for Node.js + Laravel hybrid roles — you qualify for both.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Build: Todo API (no DB)",
+                sub: "Build an in-memory Todo REST API. Full CRUD. Test with Postman or Thunder Client.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Push to GitHub",
+                sub: "Create repo 'node-learning'. Push Day 2 work. This becomes your portfolio evidence.",
+              },
+            ],
+            goals: [
+              "Express API with 5 routes working",
+              "Tested in Postman",
+              "GitHub push done",
+              "2+ jobs applied",
+            ],
+          },
+          {
+            label: "Day 3",
+            name: "Prisma + Database",
+            type: "learn",
+            color: "#4db8ff",
+            focus: "Database Layer — Prisma ORM",
+            subtitle:
+              "You already know Eloquent. Prisma will feel familiar — schema-first, type-safe, and clean.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Review & daily plan",
+                sub: "",
+              },
+              {
+                time: "9:00–11:00",
+                period: "morning",
+                text: "Prisma setup + tutorial",
+                sub: "Install Prisma, connect to MySQL, define schema (similar to Laravel migrations). Run migrations. Map Prisma Client to Eloquent.",
+              },
+              {
+                time: "11:00–12:00",
+                period: "morning",
+                text: "Mongoose quick overview (1 hour)",
+                sub: "MongoDB + Mongoose basics. Just understand when you'd choose it — not an expert session.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Build: Add Prisma to your Todo API",
+                sub: "Connect Day 2's Todo API to MySQL via Prisma. Replace in-memory array with real database queries.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Write a short cover letter template for Node.js roles. Apply to 2 positions.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Extend API: Users table + relations",
+                sub: "Add a User model. Relate Todos to Users. Practice Prisma relations just like Eloquent relationships.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Push + write README.md",
+                sub: "Add a README describing what the project does. First professional documentation.",
+              },
+            ],
+            goals: [
+              "Prisma connected to MySQL",
+              "Relational model working",
+              "README written",
+              "2 jobs applied",
+            ],
+          },
+          {
+            label: "Day 4",
+            name: "JWT Auth + Middleware",
+            type: "learn",
+            color: "#4db8ff",
+            focus: "JWT Authentication + Middleware",
+            subtitle:
+              "You've done Laravel Auth and OAuth before. JWT in Node is simpler — just a different approach.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Review & plan",
+                sub: "",
+              },
+              {
+                time: "9:00–12:00",
+                period: "morning",
+                text: "JWT auth in Express",
+                sub: "Install jsonwebtoken + bcrypt. Build register/login routes. Hash passwords. Generate and verify JWTs. Compare to Laravel Sanctum.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Build auth middleware",
+                sub: "Write a protect() middleware that validates JWT on protected routes. Attach user to req object. Like Laravel's auth() middleware.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Apply to 3 roles. Try reaching out to 1 recruiter on LinkedIn directly with a specific, short message.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Add auth to your Todo API",
+                sub: "Protect CRUD routes. Only logged-in users see their own todos. Test the full auth flow end-to-end.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Push to GitHub",
+                sub: "",
+              },
+            ],
+            goals: [
+              "JWT auth working end-to-end",
+              "Protected routes complete",
+              "3 jobs applied",
+            ],
+          },
+          {
+            label: "Day 5",
+            name: "Queues + BullMQ",
+            type: "learn",
+            color: "#4db8ff",
+            focus: "Queues & Async Processing",
+            subtitle:
+              "You already know Horizon + Redis + Kafka. BullMQ is the Node equivalent — this will click fast.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Review auth. Fix any Day 4 bugs.",
+                sub: "",
+              },
+              {
+                time: "9:00–12:00",
+                period: "morning",
+                text: "BullMQ tutorial",
+                sub: "Install BullMQ + Redis. Create queue, add jobs, process them. Map: Laravel Queue → BullMQ Queue, Horizon worker → BullMQ Worker.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Add queue to your project",
+                sub: "On user register → queue a welcome email job using Nodemailer. Your first async feature in Node.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Apply to 2–3 roles. Update GitHub profile README to show your Node progress this week.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Failed job handling + retry logic",
+                sub: "Configure max retries, backoff strategy, and failed job logging. You already know this from Laravel — just different syntax.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Push + document queue setup in README",
+                sub: "",
+              },
+            ],
+            goals: [
+              "BullMQ queue working",
+              "Email-on-register feature done",
+              "Retry logic configured",
+            ],
+          },
+          {
+            label: "Day 6",
+            name: "Docker + CI/CD",
+            type: "build",
+            color: "#00e5a0",
+            focus: "Containerise Your Node Project",
+            subtitle:
+              "You already do this professionally for MyGov. Apply the same skills — this should be fast.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Review Week 1 progress",
+                sub: "Look at your GitHub. What's done, what's incomplete. Make a small bug fix list.",
+              },
+              {
+                time: "9:00–12:00",
+                period: "morning",
+                text: "Dockerise your Node API",
+                sub: "Write Dockerfile for Node.js. Add docker-compose.yml with Node app + MySQL + Redis. You already know Docker — this should be fast.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "GitHub Actions CI pipeline",
+                sub: "Add .github/workflows/ci.yml. Run tests on push. Lighter than Jenkins but shows modern CI skills on your portfolio.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Apply to 3 roles. Write one LinkedIn post: 'Week 1 of adding Node.js to my stack as a senior Laravel dev.' Share your GitHub.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Fix Docker issues. Test full stack.",
+                sub: "Ensure docker-compose up runs the complete stack cleanly. Smoke test all routes.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Push + update README with Docker instructions",
+                sub: "",
+              },
+            ],
+            goals: [
+              "docker-compose up runs fully",
+              "GitHub Actions CI green",
+              "LinkedIn post published",
+            ],
+          },
+          {
+            label: "Day 7",
+            name: "Review + Polish",
+            type: "review",
+            color: "#b47fff",
+            focus: "Consolidate Week 1 & Plan Week 2",
+            subtitle:
+              "Rest-forward day — review everything, fix loose ends, add tests, plan the real project.",
+            blocks: [
+              {
+                time: "8:00–10:00",
+                period: "morning",
+                text: "Week 1 code review",
+                sub: "Go through all code written this week. Refactor messy parts. Add comments where helpful.",
+              },
+              {
+                time: "10:00–12:00",
+                period: "morning",
+                text: "Write tests with Jest",
+                sub: "Add basic unit tests for your API routes. Jest is the Node standard — this is a key employability skill.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Job search block (extended)",
+                sub: "Apply to 4 roles. Update resume to include Node.js, Express, Prisma, BullMQ, JWT. You can now list them honestly.",
+              },
+              {
+                time: "15:00–17:00",
+                period: "afternoon",
+                text: "Plan Week 2 project",
+                sub: "Design the Job Board project. Write the feature list, DB schema, and API spec on paper or Notion before touching code.",
+              },
+              {
+                time: "17:00–18:00",
+                period: "evening",
+                text: "Update LinkedIn + GitHub",
+                sub: "Add Node.js skills to LinkedIn. Pin your Todo API repo. Add the project to your profile.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Rest. No screens.",
+                sub: "You've covered environments, Express, Prisma, auth, queues, Docker, and CI in 7 days. That's real progress.",
+              },
+            ],
+            goals: [
+              "Jest tests added",
+              "Resume updated with Node skills",
+              "Week 2 project spec written",
+              "4 jobs applied",
+            ],
+          },
+        ],
+        2: [
+          {
+            label: "Day 8",
+            name: "Job Board: Scaffold",
+            type: "build",
+            color: "#00e5a0",
+            focus: "Start Building a Real Node.js Project",
+            subtitle:
+              "A Job Board API — relevant to your own situation and genuinely impressive to employers.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Project setup",
+                sub: "New repo: node-job-board. Set up Express + Prisma + MySQL + BullMQ + Redis via docker-compose. Use MVC folder structure — your Laravel muscle memory.",
+              },
+              {
+                time: "9:00–12:00",
+                period: "morning",
+                text: "Build: User + Company + Job models",
+                sub: "Schema design — Users (job seekers), Companies, Jobs, Applications. Run Prisma migrations. Apply your DB design strength here.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Build: Auth routes (register/login + JWT)",
+                sub: "Adapt Week 1 auth. Add role-based access: seeker vs employer — like Laravel Gates and Policies.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Apply to 2–3 roles. Check if companies you've applied to have Node + Laravel hybrid roles — double down on those.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Build: Job CRUD for employers",
+                sub: "POST/GET/PUT/DELETE /jobs — only employers can create jobs, seekers can only read them. Role-based middleware.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Push to GitHub with day's progress",
+                sub: "",
+              },
+            ],
+            goals: [
+              "Project scaffolded",
+              "Auth with roles working",
+              "Job CRUD complete for employers",
+            ],
+          },
+          {
+            label: "Day 9",
+            name: "Application Flow",
+            type: "build",
+            color: "#00e5a0",
+            focus: "Application Submission + Queue Notifications",
+            subtitle:
+              "Combine your async knowledge with the real project. This is the core feature.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Review Day 8. Fix any issues.",
+                sub: "",
+              },
+              {
+                time: "9:00–12:00",
+                period: "morning",
+                text: "Build: Job application routes",
+                sub: "POST /jobs/:id/apply — seekers apply to jobs. Store application + status (pending/reviewed/rejected). Validate duplicate applications.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Build: Email notifications via BullMQ",
+                sub: "When someone applies: queue 'new application' email to employer. When employer reviews: queue status update email to seeker.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Apply to 3 roles. Follow up on any applications from last week — a polite one-liner email goes a long way.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Test the full application flow end-to-end",
+                sub: "Register seeker + employer. Post a job. Apply. Check queued emails. Review application. Confirm status email fires.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Push + document in README",
+                sub: "",
+              },
+            ],
+            goals: [
+              "Application flow complete",
+              "Queue emails working",
+              "End-to-end tested manually",
+            ],
+          },
+          {
+            label: "Day 10",
+            name: "Search + Redis Cache",
+            type: "build",
+            color: "#00e5a0",
+            focus: "Job Search with Redis Caching",
+            subtitle:
+              "You already use Redis in production at MyGov. Show it in your Node project too.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Review & plan",
+                sub: "",
+              },
+              {
+                time: "9:00–12:00",
+                period: "morning",
+                text: "Build: Job search + filters",
+                sub: "GET /jobs?title=&location=&type= — full-text search + filters. Prisma where clause. Pagination with cursor or offset.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Add Redis caching to search",
+                sub: "Cache popular search results with 5-minute TTL. Invalidate cache when a new job is posted. This is interview gold — shows performance thinking.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Apply to 2–3 roles. Target 'Node.js + Redis' or 'Node.js + queue' roles — you now have real, demonstrable experience.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Rate limiting middleware",
+                sub: "Add express-rate-limit. Limit requests per IP. Like Laravel's throttle middleware — same concept, same purpose.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Push + update README",
+                sub: "",
+              },
+            ],
+            goals: [
+              "Search + filters working",
+              "Redis cache on search routes",
+              "Rate limiting added",
+            ],
+          },
+          {
+            label: "Day 11",
+            name: "Tests — Jest",
+            type: "learn",
+            color: "#4db8ff",
+            focus: "Write Proper Tests — Jest + Supertest",
+            subtitle:
+              "Tests separate junior projects from senior ones. This matters for every application you send.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Review & plan",
+                sub: "",
+              },
+              {
+                time: "9:00–12:00",
+                period: "morning",
+                text: "Jest + Supertest setup",
+                sub: "Install Jest + Supertest. Configure test database (.env.test). Write integration tests for auth routes.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Write tests for job + application routes",
+                sub: "Test: create job (employer only), apply to job (seeker only), get job list with filters. Seed test data before each test.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Apply to 3 roles. Check your GitHub — make sure the profile looks active and professional to a recruiter browsing it.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Add tests to GitHub Actions CI",
+                sub: "Make CI run tests on every push. A green CI badge in README is a strong positive signal to any technical interviewer.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Push + add CI badge to README",
+                sub: "",
+              },
+            ],
+            goals: [
+              "10+ tests passing",
+              "CI runs tests on push",
+              "Green badge in README",
+            ],
+          },
+          {
+            label: "Day 12",
+            name: "Deploy Live",
+            type: "build",
+            color: "#00e5a0",
+            focus: "Deploy Your Project to a Real Server",
+            subtitle:
+              "You manage Oracle Cloud + Jenkins professionally. Use that strength here — same skills, smaller scale.",
+            blocks: [
+              {
+                time: "8:00–9:00",
+                period: "morning",
+                text: "Review + fix any test failures",
+                sub: "",
+              },
+              {
+                time: "9:00–12:00",
+                period: "morning",
+                text: "Deploy to VPS (Railway / Oracle Free Tier)",
+                sub: "Push docker-compose setup. Set environment variables. Get a public URL. Oracle Free Tier is free and you already know it well.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Configure Nginx reverse proxy + SSL",
+                sub: "Set up Nginx in front of your Node app. Add SSL via Let's Encrypt. Like what you do for MyGov — just smaller.",
+              },
+              {
+                time: "15:00–16:00",
+                period: "afternoon",
+                text: "Job search block",
+                sub: "Apply to 3 roles. Now you have a live Node.js project URL to include in every application and interview.",
+              },
+              {
+                time: "16:00–18:00",
+                period: "evening",
+                text: "Smoke test the live deployment",
+                sub: "Test all endpoints against the live URL via Postman. Fix any environment-specific issues.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Add live URL to README and GitHub profile",
+                sub: "",
+              },
+            ],
+            goals: [
+              "Live URL working",
+              "SSL configured",
+              "URL in resume and GitHub",
+              "3 jobs applied",
+            ],
+          },
+          {
+            label: "Day 13",
+            name: "Portfolio + Resume",
+            type: "job",
+            color: "#ffb347",
+            focus: "Make Your Job Search Materials Work Harder",
+            subtitle:
+              "Dedicated job search day — your project is built. Now position yourself aggressively.",
+            blocks: [
+              {
+                time: "8:00–10:00",
+                period: "morning",
+                text: "Write a strong project README",
+                sub: "Tech stack, features, architecture decisions, live URL, local setup instructions. Interviewers read this first — make it count.",
+              },
+              {
+                time: "10:00–12:00",
+                period: "morning",
+                text: "Update resume",
+                sub: "Add: Node.js, Express.js, Prisma, BullMQ, Jest, Supertest, GitHub Actions. Add the Job Board as a portfolio project with live URL.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Update LinkedIn fully",
+                sub: "Headline: 'Senior Software Engineer | PHP Laravel · Node.js · DevOps'. Update About section. Add the project. Write a post about the sprint.",
+              },
+              {
+                time: "15:00–17:00",
+                period: "afternoon",
+                text: "Apply to 5 roles today",
+                sub: "Senior backend, full-stack, or DevOps roles. Target companies using both Laravel and Node. Write personalised cover letters.",
+              },
+              {
+                time: "17:00–18:00",
+                period: "evening",
+                text: "Reach out to 3 people on LinkedIn",
+                sub: "Former colleagues, recruiters, or people at target companies. One short, specific message each — no copy-paste.",
+              },
+              { time: "18:00–19:00", period: "evening", text: "Rest", sub: "" },
+            ],
+            goals: [
+              "Resume updated",
+              "LinkedIn updated",
+              "5 jobs applied",
+              "3 outreach messages sent",
+            ],
+          },
+          {
+            label: "Day 14",
+            name: "Review + Next Steps",
+            type: "review",
+            color: "#b47fff",
+            focus: "Final Review & Plan What Comes Next",
+            subtitle:
+              "Celebrate what you built. You went from 0 to a live, tested, deployed Node.js project in 2 weeks.",
+            blocks: [
+              {
+                time: "8:00–10:00",
+                period: "morning",
+                text: "Final code review of Job Board",
+                sub: "Clean up TODO comments, remove console.logs, double-check all error handling. Make it genuinely production-ready.",
+              },
+              {
+                time: "10:00–12:00",
+                period: "morning",
+                text: "Write a blog post or LinkedIn article",
+                sub: "'How I added Node.js to my Laravel stack in 2 weeks' — content marketing for your job search. Developers who write get noticed.",
+              },
+              {
+                time: "12:00–13:00",
+                period: "break",
+                text: "Lunch break",
+                sub: "",
+              },
+              {
+                time: "13:00–15:00",
+                period: "afternoon",
+                text: "Apply to 3–5 more roles",
+                sub: "",
+              },
+              {
+                time: "15:00–17:00",
+                period: "afternoon",
+                text: "Plan Week 3+",
+                sub: "Next step options: TypeScript (critical for Node seniority), NestJS (Laravel-like Node framework), WebSockets (Socket.io), or GraphQL. Pick one.",
+              },
+              {
+                time: "17:00–18:00",
+                period: "evening",
+                text: "Interview preparation",
+                sub: "Write answers to common Node.js interview questions. Compare them to how you'd answer the same question in Laravel context.",
+              },
+              {
+                time: "18:00–19:00",
+                period: "evening",
+                text: "Take the evening fully off.",
+                sub: "You've built a real project, learned a new stack, and kept your job search active for 14 days. That's a strong, disciplined sprint.",
+              },
+            ],
+            goals: [
+              "Project polished and live",
+              "Blog post published",
+              "Week 3 plan written",
+              "Total: 30+ applications sent",
+            ],
+          },
+        ],
+      };
+
+      const typeColors = {
+        learn: "#4db8ff",
+        build: "#00e5a0",
+        review: "#b47fff",
+        job: "#ffb347",
+      };
+      const typeNames = {
+        learn: "LEARN",
+        build: "BUILD",
+        review: "REVIEW",
+        job: "JOB SEARCH",
+      };
+
+      let currentWeek = 1;
+      let currentDay = 0;
+
+      function switchWeek(w) {
+        currentWeek = w;
+        currentDay = 0;
+        document
+          .querySelectorAll(".week-tab")
+          .forEach((t, i) => t.classList.toggle("active", i === w - 1));
+        render();
+      }
+
+      function render() {
+        renderList();
+        renderDetail();
+      }
+
+      function renderList() {
+        const days = weeks[currentWeek];
+        document.getElementById("day-list-inner").innerHTML = days
+          .map(
+            (d, i) => `
+    <div class="day-item ${i === currentDay ? "active" : ""}" onclick="selectDay(${i})">
+      <div class="day-num">${currentWeek === 1 ? i + 1 : i + 8}</div>
+      <div class="day-info">
+        <div class="day-title">${d.name}</div>
+      </div>
+      <div class="day-type-dot" style="background:${typeColors[d.type]}"></div>
+    </div>
+  `,
+          )
+          .join("");
+      }
+
+      function renderDetail() {
+        const d = weeks[currentWeek][currentDay];
+        const dayNum = currentWeek === 1 ? currentDay + 1 : currentDay + 8;
+        const progress = Math.round((dayNum / 14) * 100);
+
+        const blockHtml = d.blocks
+          .map((b) => {
+            const isBreak = b.period === "break";
+            return `
+      <div class="time-block ${isBreak ? "break-block" : b.period}">
+        <div class="time-slot">
+          ${b.time}
+          ${!isBreak ? `<div class="time-period tp-${b.period}">${b.period.toUpperCase()}</div>` : ""}
+        </div>
+        <div class="block-content">
+          <div class="block-title">${b.text}</div>
+          ${b.sub ? `<div class="block-sub">${b.sub}</div>` : ""}
+        </div>
+      </div>
+    `;
+          })
+          .join("");
+
+        document.getElementById("detail-panel").innerHTML = `
+    <div class="detail-hero" data-day="${dayNum}">
+      <div class="detail-meta">
+        <span class="type-badge type-${d.type}">${typeNames[d.type]}</span>
+        <span class="detail-day-label">Day ${dayNum} of 14</span>
+      </div>
+      <div class="detail-title">${d.focus}</div>
+      <div class="detail-subtitle">${d.subtitle}</div>
+    </div>
+    <div class="goals-row">
+      ${d.goals.map((g) => `<div class="goal-chip">${g}</div>`).join("")}
+    </div>
+    <div class="schedule-body">
+      <div class="section-header">// HOURLY SCHEDULE</div>
+      <div class="time-blocks fade-in">${blockHtml}</div>
+    </div>
+    <div class="progress-section">
+      <div class="progress-label">
+        <span>// OVERALL PROGRESS</span>
+        <span>${progress}% — Day ${dayNum} of 14</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:${progress}%"></div>
+      </div>
+    </div>
+  `;
+      }
+
+      function selectDay(i) {
+        currentDay = i;
+        render();
+      }
+
+      render();
+    </script>
+  </body>
+</html>
